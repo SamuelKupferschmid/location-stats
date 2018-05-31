@@ -1,4 +1,4 @@
-let labels = ['Home', 'Office', 'School', 'Commute'];
+let labels = ['Zuhause', 'Büro', 'Schule', 'Reiseweg'];
 let namedColumns = labels.map(l => [l]);
 let areaTypes = labels.reduce((acc,cur)=> { acc[cur] = 'area-spline'; return acc },{});
 let overviewChart = c3.generate({
@@ -13,9 +13,12 @@ let overviewChart = c3.generate({
             tick: {
                 format: function (x) {
                     let date = new Date(data[x].date);
-                    return date.getDay() + '.' + (date.getMonth()+1) + '.' + date.getFullYear() + ' ' + x;
+                    return date.getDate() + '.' + (date.getMonth()+1) + '.' + date.getFullYear();
                 }
             }
+        },
+        y : {
+            show : false
         }
     },
     tooltip: {
@@ -46,6 +49,9 @@ let dayTimelineChart = c3.generate({
                     return ((x / 4) + 6).toFixed() + ':' + ((x % 4) * 15).toFixed().padStart(2, '0');
                 }
             }
+        },
+        y : {
+            show : false
         }
     },tooltip: {
         show: false
@@ -59,7 +65,7 @@ var rangeRatioChart = c3.generate({
         type: 'donut',
     },
     donut: {
-        title: 'Hours / Week',
+        title: 'Stunden / Wochen',
         label: {
             format: function (value, ratio, id) {
                 return value + 'h';
@@ -79,21 +85,24 @@ function updateRange(range) {
     if (dayEnd >= data.length)
         dayEnd = data.length - 1;
 
-    timeslots = Array.from(new Array(4), () => new Array(60).fill(0));
-    sum = new Array(4).fill(0);
+    timeslots = Array.from(new Array(5), () => new Array(60).fill(0));
+    sum = new Array(5).fill(0);
 
     for (var i = dayStart; i <= dayEnd; i++) {
-        for (var s = 0; s < 46; s++) {
-            var l = data[i].timeslots[s];
-            if (l >= 0 && l < 3) {
-                timeslots[l][s]++;
-                sum[l]++;
+        for(var l = 0; l < 5; l++) {
+            for(var s = 0; s < 60;s++) {
+                var val = data[i].timeslots[l][s];
+                timeslots[l][s] += val;
+                sum[l] += val;
             }
         }
     }
 
+    timeslots = timeslots.slice(1,5);
+    sum = sum.slice(1,5);
+
     var weeks = dayEnd - dayStart;
-    sum = sum.map((v) => Math.round(v / weeks));
+    sum = sum.map((v) => Math.round(v / (weeks * 4)));
 
     var columns = namedColumns.map((arr, i) => arr.concat(timeslots[i]));
 
@@ -104,20 +113,6 @@ function updateRange(range) {
     rangeRatioChart.load({columns:donutColumns});
 
 
-}
-
-function animate2() {
-    let cursor = 0;
-    let length = 4;
-    let steps = 1;
-
-    let move = () => {
-        cursor += steps;
-        requestAnimationFrame(move);
-        goToRange(cursor, cursor + length);
-    };
-
-    move();
 }
 
 function goToRange(start, end) {

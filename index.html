@@ -12,24 +12,36 @@
 <body>
 <div class="container">
     <h1>Timeline</h1>
-    <div id="link-bar">
-        Go To
-        <a href="#" onclick="goToRange(0,246)">All</a>
-        <a href="#" onclick="goToRange(0,86)">Company 1</a>
-        <a href="#" onclick="goToRange(86,181)">Company 2</a>
-        <a href="#" onclick="goToRange(187,246)">Company 3</a>
+</div>
+<div class="container">
+    <div class="flex-4" id="overviewChart"></div>
+    <div class="flex-1" style="margin: 10px">
+        <h2>Mein Standordverhalten</h2>
+        <p>
+            <span>Seit dem Jahr 2013 sammelt Google intensiv alle m&ouml;glichen Standordinformationen von mir und Millionen anderen Users.</span>
+            <span>Auf dieser Seite befinden sich meine Standorte als 15min Fenster zwischen 6-21 Uhr an Wochentagen. </span>
+        </p>
+        <span>Die Timeline zeigt die Aufenthaltsdauer der verschiedenen Standorten über die Zeit hinweg an. Gleichzeitig dient die Timeline als Filterwerkzeug, welches durch Scrollen oder Markieren aktiviert werden kann.</span>
+        <span>Der Tagesablauf zeigt innerhalb des gewählten Zeitrahmens die Aufenthalte über den Tag verteilt.</span>
+        <p>
+            W&auml;hrend dieser Zeit habe mein Wohnort sowie mein Arbeitsplat mehrmals ge&auml;ndert. Probieren Sie
+            selbst aus, welchen Einfluss dies auf mein Standortverhalten hatte:
+        </p>
+        <div id="link-bar">
+            <a href="#" onclick="goToRange(0,86)">Arbeitsgeber 1</a> |
+            <a href="#" onclick="goToRange(86,181)">Arbeitsgeber 2</a> |
+            <a href="#" onclick="goToRange(187,246)">Arbeitsgeber 3</a> |
+<br>
+            <a href="#" onclick="goToRange(0,14)">Wohnort 1</a> |
+            <a href="#" onclick="goToRange(14,127)">Wohnort 2</a> |
+            <a href="#" onclick="goToRange(127,246)">Wohnort 3</a> |
+        </div>
 
-        <a href="#" onclick="goToRange(0,14)">Home 1</a>
-        <a href="#" onclick="goToRange(14,127)">Home 2</a>
-        <a href="#" onclick="goToRange(127,246)">Home 2</a>
     </div>
 </div>
 <div class="container">
-    <div id="overviewChart"></div>
-</div>
-<div class="container">
-    <h1 class="flex-4">Daily routine for <span>test</span></h1>
-    <h1 class="flex-1">Spent time per week</h1>
+    <h1 class="flex-4">Tagesablauf</h1>
+    <h1 class="flex-1"></h1>
 </div>
 <div class="container">
     <div class="flex-4" id="dayTimelineChart"></div>
