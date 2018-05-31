@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    position: relative;
+    width: 100%;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-4 {
+    flex: 4;
+}
+
+* {
+    font-family: sans-serif;
+}
+
+#link-bar > a {
+    text-decoration: none;
+}
+
+#link-bar > a:hover {
+    text-decoration: underline;
+}

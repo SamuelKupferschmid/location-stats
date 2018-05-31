@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Office-, School- & Commutetimes</title>
+    <link href="c3.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script src="d3.min.js" charset="utf-8"></script>
+    <script src="c3.min.js"></script>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Timeline</h1>
+    <div id="link-bar">
+        Go To
+        <a href="#" onclick="goToRange(0,246)">All</a>
+        <a href="#" onclick="goToRange(0,86)">Company 1</a>
+        <a href="#" onclick="goToRange(86,181)">Company 2</a>
+        <a href="#" onclick="goToRange(187,246)">Company 3</a>
+
+        <a href="#" onclick="goToRange(0,14)">Home 1</a>
+        <a href="#" onclick="goToRange(14,127)">Home 2</a>
+        <a href="#" onclick="goToRange(127,246)">Home 2</a>
+    </div>
+</div>
+<div class="container">
+    <div id="overviewChart"></div>
+</div>
+<div class="container">
+    <h1 class="flex-4">Daily routine for <span>test</span></h1>
+    <h1 class="flex-1">Spent time per week</h1>
+</div>
+<div class="container">
+    <div class="flex-4" id="dayTimelineChart"></div>
+    <div class="flex-1" id="rangeRatioChart"></div>
+</div>
+<script src="app.js"></script>
